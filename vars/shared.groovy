@@ -3,15 +3,15 @@ def call(String stageName){
         sh 'mvn clean'
         sh 'mvn install'
     }
-    else if ("${stageName}" == 'CodeQualityAnalysis') {
+    elif ("${stageName}" == 'CodeQualityAnalysis') {
         sh 'mvn clean'
         sh 'mvn sonar:sonar'
     }
-    else if ("${stageName}" == 'BackupArtifacts') {
+    elif ("${stageName}" == 'BackupArtifacts') {
         sh 'mvn clean'
         sh 'mvn deploy'
     }
-    else if ("${stageName}" == 'Authorisation') {
+    elif ("${stageName}" == 'Authorisation') {
         timeout(time: 48, unit: 'HOURS') {
             // some block
             input message: 'Approve or Decline'
